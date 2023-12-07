@@ -1,0 +1,68 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: SF UI Display, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  color: #fff;
+  background-color: #121212;
+}
+
+h1,
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.page-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.header-icon {
+  margin-right: 8px;
+}
+.header-title {
+  color: #f6bd41;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.heading {
+  padding-top: 31px;
+  padding-bottom: 29px;
+}
+
+.playlists-wrapper {
+  display: flex;
+}
+
+.playlist {
+  display: flex;
+  max-width: 570px;
+  border-radius: 4px;
+  background: #1c1c1c;
+  padding-top: 24px;
+  padding-right: 36px;
+  padding-bottom: 47px;
+  padding-left: 36px;
+}
