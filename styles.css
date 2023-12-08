@@ -54,10 +54,12 @@ h2 {
 
 .playlists-wrapper {
   display: flex;
+  gap: 12px;
 }
 
 .playlist {
   display: flex;
+  flex-direction: column;
   max-width: 570px;
   border-radius: 4px;
   background: #1c1c1c;
@@ -65,4 +67,93 @@ h2 {
   padding-right: 36px;
   padding-bottom: 47px;
   padding-left: 36px;
+}
+
+.playlist__heading {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.playlist__cover-wrapper {
+  max-width: 170px;
+  max-height: 176px;
+  margin-right: 24px;
+}
+
+.playlist__info-wrapper {
+  padding-top: 7px;
+  padding-bottom: 17px;
+}
+
+.playlist__subtitle-wrapper {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 23px;
+}
+
+.playlist__title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.playlist__count-duration-wrapper {
+  color: #8a8a8a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 11px;
+}
+
+.playlist__artists {
+  line-height: 24px;
+}
+
+.playlist__and-other {
+  color: #8a8a8a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.track__cover {
+  margin-right: 12px;
+}
+
+.track__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.track__title {
+  margin-bottom: 9px;
+}
+
+.track__artist-name {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.track__name {
+  color: #8a8a8a;
+  font-size: 12px;
+}
+
+.track__audio {
+  max-height: 24px;
+  border-radius: 4px;
+  filter: invert(100%);
+}
+
+.track__audio::-webkit-media-controls-enclosure {
+  border-radius: 4px;
+  color: #fff;
 }

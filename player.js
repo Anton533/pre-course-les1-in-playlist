@@ -11,92 +11,180 @@ const playlistOne = {
       coverImageUrl: "./img/eminem.png",
       artistName: "Eminem",
       title: "Rap God",
-      fileUrl: "./src/Eminem_-_Rap_God.mp3",
+      fileUrl: "./audio/eminem-rap-god.mp3",
       isHot: true,
     },
     {
       coverImageUrl: "./img/50cent.png",
       artistName: "50cent",
       title: "In da Club",
-      fileUrl: "./src/50-cent-In-Da-Club.mp3",
+      fileUrl: "./audio/50сent-in-da-club.mp3",
       isHot: false,
     },
     {
       coverImageUrl: "./img/dmx.png",
       artistName: "DMX",
-      title: "Give It To Ya",
-      fileUrl: "./src/DMX-X-Gon-Give-It-To-Ya.mp3",
+      title: "X Gon' Give It To Ya",
+      fileUrl: "./audio/dmx-x-gon-give-it-to-ya.mp3",
       isHot: true,
     },
     {
       coverImageUrl: "./img/eminem50cent.png",
       artistName: "Eminem feat 50 Cent, Cashis, Lloyd Banks",
       title: "You Don't Know",
-      fileUrl: "./src/eminem-50cent-you-dont-know.mp3",
+      fileUrl: "./audio/eminem-50cent-you-dont-know.mp3",
       isHot: true,
     },
   ],
 };
 
-const playlistsTwo = {
+const playlistTwo = {
   title: "Rap Hits 1990s",
-  coverImageUrl: "./src/Rap-Hits-1990s.jpg",
+  coverImageUrl: "./img/Rap-Hits-1990s.png",
   info: {
     totalTracksCount: 4,
-    totalTracksDurationInSeconds: 733,
+    totalTracksDurationInSeconds: 942,
   },
   label: "./src/isHot.png",
   tracks: [
     {
-      coverImageUrl: "./src/Fight-the-Power.jpg",
+      coverImageUrl: "./img/public-enemy.png",
       artistName: "Public Enemy",
       title: "Fight the Power",
-      fileUrl: "./src/Eminem_-_Rap_God.mp3",
+      fileUrl: "./audio/public-enemy-fight-the-power.mp3",
       isHot: true,
     },
     {
-      coverImageUrl: "./src/Ice-Ice-Baby.jpg",
+      coverImageUrl: "./img/vanila-ice.png",
       artistName: "Vanila Ice",
       title: "Ice Ice Baby",
-      fileUrl: "./src/50-cent-In-Da-Club.mp3",
+      fileUrl: "./audio/vanilla-ice-ice-ice-baby.mp3",
       isHot: true,
     },
     {
-      coverImageUrl: "./src/MC-Hammer.jpg",
+      coverImageUrl: "./img/mc-hammer.png",
       artistName: "MC Hammer",
       title: "You Can’t Touch This",
-      fileUrl: "./src/DMX-X-Gon-Give-It-To-Ya.mp3",
+      fileUrl: "./audio/mc-hammer-u-can't-touch-this.mp3",
       isHot: false,
     },
     {
-      coverImageUrl: "./src/Brand-Nubian.jpg",
+      coverImageUrl: "./img/public-enemy.png",
       artistName: "Brand Nubian",
       title: "Brand Nubian",
-      fileUrl: "./src/eminem-50cent-you-dont-know.mp3",
+      fileUrl: "./audio/brand-nubian-brand-nubian.mp3",
       isHot: false,
     },
   ],
 };
 const playlist1 = document.getElementById("playlist-1");
+const playlist2 = document.getElementById("playlist-2");
 
-console.log(playlist1);
+renderPlaylist(playlistOne, playlist1);
+renderPlaylist(playlistTwo, playlist2);
 
-renderPlaylist(playlist);
+function renderPlaylist(playlistForRendering, ele) {
+  createPlaylistHeading(playlistForRendering, ele);
 
-function renderPlaylist(playlistForRendering) {
-  // all render code should be here.
-  let playlistImageElement = document.createElement("img");
-  playlistImageElement.src = playlist.coverImageUrl;
-  playlist1.append(playlistImageElement);
+  playlistForRendering.tracks.forEach((track) => {
+    renderTrack(track, ele);
+  });
+}
 
-  let playlistTitleElement = document.createElement("h2");
-  playlistTitleElement.append(playlist.title);
-  playlist1.append(playlistTitleElement);
+function createEle(tagName, className) {
+  tag = document.createElement(tagName);
+  tag.classList = className;
+  return tag;
+}
 
-  let trackListElement = document.createElement("ul");
+function createPlaylistHeading(playlistForRendering, ele) {
+  const div = createEle("div", "playlist__heading");
+  createCover(playlistForRendering, div);
+  createInfo(playlistForRendering, div);
+  ele.append(div);
+}
 
-  let track1Element = document.createElement("li");
-  track1Element.append(
-    playlist.tracks[0].artistName + " - " + playlist.tracks[0].title
-  );
+function createCover(data, ele) {
+  const div = createEle("div", "playlist__cover-wrapper");
+  const playlistImageElement = createEle("img", "playlist-cover");
+  playlistImageElement.src = data.coverImageUrl;
+  div.append(playlistImageElement);
+  ele.append(div);
+}
+
+function createInfo(data, ele) {
+  const div = createEle("div", "playlist__info-wrapper");
+  createSubtitle(div);
+  createTitle(data, div);
+  createCountDuration(data, div);
+  createArtistsInfo(data, div);
+  ele.append(div);
+}
+
+function createSubtitle(ele) {
+  const div = createEle("div", "playlist__subtitle-wrapper");
+  const span = createEle("span", "playlist__subtitle");
+  span.innerHTML = `Playlist`;
+  div.append(span);
+  ele.append(div);
+}
+
+function createTitle(data, ele) {
+  const playlistTitleElement = createEle("h2", "playlist__title");
+  playlistTitleElement.append(data.title);
+  ele.append(playlistTitleElement);
+}
+
+function createCountDuration(data, ele) {
+  const div = createEle("div", "playlist__count-duration-wrapper");
+  createCount(data, div);
+  createDuration(data, div);
+  ele.append(div);
+}
+
+function createCount(data, ele) {
+  const span = createEle("span", "playlist__count");
+  span.append(`${data.info.totalTracksCount} tracks, `);
+  ele.append(span);
+}
+function createDuration(data, ele) {
+  const span = createEle("span", "playlist__duration");
+  const min =
+    (data.info.totalTracksDurationInSeconds -
+      (data.info.totalTracksDurationInSeconds % 60)) /
+    60;
+  const sec = data.info.totalTracksDurationInSeconds % 60;
+  span.append(`${min}m ${sec}s`);
+  ele.append(span);
+}
+
+function createArtistsInfo(data, ele) {
+  const arr = data.tracks.slice(0, 3);
+  const artistsWrapper = createEle("span", "playlist__artists");
+  const artists = arr.map((ele) => " " + ele.artistName);
+  const andOther = createEle("span", "playlist__and-other");
+  andOther.append(" " + "and others");
+  artistsWrapper.append(artists, andOther);
+  ele.append(artistsWrapper);
+}
+
+function renderTrack(data, ele) {
+  const trackEle = createEle("div", "track");
+  const trackEleImage = createEle("img", "track__cover");
+  const trackInfo = createEle("div", "track__info");
+  const trackTitle = createEle("div", "track__title");
+  const trackArtistName = createEle("span", "track__artist-name");
+  const trackName = createEle("span", "track__name");
+  const trackAudio = createEle("audio", "track__audio");
+
+  trackEleImage.src = data.coverImageUrl;
+  trackArtistName.innerHTML = `${data.artistName} - `;
+  trackName.innerHTML = `${data.title}`;
+  trackAudio.controls = "controls";
+  trackAudio.src = data.fileUrl;
+
+  trackTitle.append(trackArtistName, trackName);
+  trackInfo.append(trackTitle, trackAudio);
+  trackEle.append(trackEleImage, trackInfo);
+  ele.append(trackEle);
 }
