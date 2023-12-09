@@ -216,6 +216,7 @@ h2 {
   max-height: 24px;
   border-radius: 4px;
   filter: invert(100%);
+  max-width: 100%;
 }
 
 .track__audio::-webkit-media-controls-enclosure {
