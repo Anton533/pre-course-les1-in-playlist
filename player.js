@@ -176,6 +176,12 @@ function renderTrack(data, ele) {
   const trackArtistName = createEle("span", "track__artist-name");
   const trackName = createEle("span", "track__name");
   const trackAudio = createEle("audio", "track__audio");
+  const isHot = createEle("img", "track__is-hot");
+  if (data.isHot) {
+    isHot.src = "./icons/is-hot.png";
+  } else {
+    isHot.innerHTML = "";
+  }
 
   trackEleImage.src = data.coverImageUrl;
   trackArtistName.innerHTML = `${data.artistName} - `;
@@ -183,7 +189,7 @@ function renderTrack(data, ele) {
   trackAudio.controls = "controls";
   trackAudio.src = data.fileUrl;
 
-  trackTitle.append(trackArtistName, trackName);
+  trackTitle.append(isHot, trackArtistName, trackName);
   trackInfo.append(trackTitle, trackAudio);
   trackEle.append(trackEleImage, trackInfo);
   ele.append(trackEle);

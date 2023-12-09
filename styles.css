@@ -198,6 +198,9 @@ h2 {
   margin-bottom: 9px;
 }
 
+.track__is-hot {
+  margin-right: 6px;
+}
 .track__artist-name {
   color: #fff;
   font-size: 12px;
