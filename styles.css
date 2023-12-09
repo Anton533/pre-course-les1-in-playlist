@@ -2,13 +2,11 @@
   padding: 0;
   margin: 0;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 body {
   font-family: SF UI Display, sans-serif;
   font-size: 16px;
@@ -18,18 +16,47 @@ body {
   color: #fff;
   background-color: #121212;
 }
-
 h1,
 h2 {
   font-size: 30px;
   font-weight: 700;
+
+  @media (max-width: 1130px) {
+    font-size: 25px;
+  }
+  @media (max-width: 1015px) {
+    font-size: 20px;
+  }
 }
+
+/* 
+>=390px:   xs - mobile x-small
+>=576px:   sm - mobile small
+>=768px:   md - Tablet portrait
+>=992px:   lg - Tablet landscape
+>=1200px:  xl - Extra large
+>=1440px:  xxl - Extra extra large 
+*/
 
 .page-wrapper {
   max-width: 1280px;
   margin: 0 auto;
   padding-left: 64px;
   padding-right: 64px;
+
+  @media (max-width: 992px) {
+    max-width: 576px;
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+  @media (max-width: 576px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (max-width: 390px) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }
 
 .header {
@@ -50,11 +77,19 @@ h2 {
 .heading {
   padding-top: 31px;
   padding-bottom: 29px;
+  @media (max-width: 576px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .playlists-wrapper {
   display: flex;
   gap: 12px;
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .playlist {
@@ -67,11 +102,24 @@ h2 {
   padding-right: 36px;
   padding-bottom: 47px;
   padding-left: 36px;
+
+  @media (max-width: 992px) {
+    max-width: 100%;
+  }
+  @media (max-width: 576px) {
+    padding: 24px;
+  }
+  @media (max-width: 390px) {
+    padding: 14px;
+  }
 }
 
 .playlist__heading {
   display: flex;
   margin-bottom: 30px;
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 }
 
 .playlist__cover-wrapper {
@@ -89,11 +137,19 @@ h2 {
   font-weight: 500;
   line-height: 24px;
   margin-bottom: 23px;
+
+  @media (max-width: 1130px) {
+    margin-bottom: 18px;
+  }
+  @media (max-width: 992px) {
+    margin-bottom: 14px;
+  }
+  @media (max-width: 576px) {
+    margin-bottom: 10px;
+  }
 }
 
 .playlist__title {
-  font-size: 30px;
-  font-weight: 700;
   margin-bottom: 10px;
 }
 
@@ -107,6 +163,9 @@ h2 {
 
 .playlist__artists {
   line-height: 24px;
+  @media (max-width: 1130px) {
+    font-size: 14px;
+  }
 }
 
 .playlist__and-other {
@@ -120,6 +179,10 @@ h2 {
   display: flex;
   align-items: center;
   margin-bottom: 24px;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: start;
+  }
 }
 
 .track__cover {
