@@ -29,15 +29,6 @@ h2 {
   }
 }
 
-/* 
->=390px:   xs - mobile x-small
->=576px:   sm - mobile small
->=768px:   md - Tablet portrait
->=992px:   lg - Tablet landscape
->=1200px:  xl - Extra large
->=1440px:  xxl - Extra extra large 
-*/
-
 .page-wrapper {
   max-width: 1280px;
   margin: 0 auto;

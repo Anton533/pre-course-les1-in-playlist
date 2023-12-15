@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InPlaylist</title>
-    <link rel="icon" type="image/x-icon" href="/icons/queue-music.svg" />
+    <link rel="icon" type="image/x-icon" href="./src/icons/queue-music.svg" />
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -16,21 +16,18 @@
         <header class="header">
           <img
             class="header-icon"
-            src="./icons/queue-music.svg"
+            src="./src/icons/queue-music.svg"
             alt="Music icon" />
           <span class="header-title">InPlaylist</span>
         </header>
 
         <main>
           <h1 class="heading">My Playlists</h1>
-          <div class="playlists-wrapper">
-            <div class="playlist" id="playlist-1"></div>
-            <div class="playlist" id="playlist-2"></div>
-          </div>
+          <div class="playlists-wrapper" id="playlists-wrapper"></div>
         </main>
       </div>
 
-      <script src="player.js"></script>
+      <script src="player.js" type="module"></script>
     </body>
   </body>
 </html>
