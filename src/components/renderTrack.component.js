@@ -1,14 +1,17 @@
-import { createEle } from "../helpers.js";
+import { createElementWithClass } from "../helpers.js";
 
 export function renderTrack(data, ele) {
-  const trackEle = createEle("li", "track");
-  const trackImageEle = createEle("img", "track__cover");
-  const trackInfoEle = createEle("div", "track__info");
-  const trackTitleEle = createEle("span", "track__title");
-  const trackArtistNameEle = createEle("span", "track__artist-name");
-  const trackNameEle = createEle("span", "track__name");
-  const trackAudioEle = createEle("audio", "track__audio");
-  const isHotEle = createEle("img", "track__is-hot");
+  const trackEle = createElementWithClass("li", "track");
+  const trackImageEle = createElementWithClass("img", "track__cover");
+  const trackInfoEle = createElementWithClass("div", "track__info");
+  const trackTitleEle = createElementWithClass("span", "track__title");
+  const trackArtistNameEle = createElementWithClass(
+    "span",
+    "track__artist-name"
+  );
+  const trackNameEle = createElementWithClass("span", "track__name");
+  const trackAudioEle = createElementWithClass("audio", "track__audio");
+  const isHotEle = createElementWithClass("img", "track__is-hot");
   if (data.isHot) {
     isHotEle.src = "./src/icons/is-hot.png";
   } else {

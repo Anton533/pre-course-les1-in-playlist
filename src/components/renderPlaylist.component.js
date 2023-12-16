@@ -1,11 +1,11 @@
-import { createEle } from "../helpers.js";
+import { createElementWithClass } from "../helpers.js";
 
 import { renderTrack } from "./renderTrack.component.js";
 import { renderHeading } from "./renderHeading.component.js";
 
 export function renderPlaylist(playlistForRendering, ele) {
-  const playlistEle = createEle("div", "playlist");
-  const tracksListEle = createEle("ul", "tracks-list");
+  const playlistEle = createElementWithClass("div", "playlist");
+  const tracksListEle = createElementWithClass("ul", "tracks-list");
   ele.append(playlistEle);
 
   renderHeading(playlistForRendering, playlistEle);
