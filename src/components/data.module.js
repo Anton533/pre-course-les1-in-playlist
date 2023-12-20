@@ -4,7 +4,8 @@ export const playlists = [
     coverImageUrl: "./src/img/hip-hop-hits.jpg",
     info: {
       totalTracksCount: 4,
-      totalTracksDurationInSeconds: 733,
+      // totalTracksDurationInSeconds: 1031,
+      totalTracksDurationInSeconds: 0,
     },
     label: "./src/icons/isHot.png",
     tracks: [
@@ -43,7 +44,8 @@ export const playlists = [
     coverImageUrl: "./src/img/Rap-Hits-1990s.png",
     info: {
       totalTracksCount: 4,
-      totalTracksDurationInSeconds: 942,
+      // totalTracksDurationInSeconds: 1043,
+      totalTracksDurationInSeconds: 0,
     },
     label: "./src/icons/isHot.png",
     tracks: [

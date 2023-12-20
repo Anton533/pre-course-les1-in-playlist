@@ -15,6 +15,7 @@ function renderCount(data, ele) {
   playlistCountEle.append(`${data.info.totalTracksCount} tracks, `);
   ele.append(playlistCountEle);
 }
+
 function renderDuration(data, ele) {
   const playlistDurationEle = createElementWithClass(
     "span",

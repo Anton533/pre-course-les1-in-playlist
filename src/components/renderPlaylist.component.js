@@ -1,17 +1,17 @@
 import { createElementWithClass } from "../helpers.js";
 
 import { renderTrack } from "./renderTrack.component.js";
-import { renderHeading } from "./renderHeading.component.js";
+import { renderHeading as renderHeader } from "./renderHeading.component.js";
 
-export function renderPlaylist(playlistForRendering, ele) {
-  const playlistEle = createElementWithClass("div", "playlist");
-  const tracksListEle = createElementWithClass("ul", "tracks-list");
-  ele.append(playlistEle);
+export function renderPlaylist(playlistForRendering, parentElement) {
+  const playlistEl = createElementWithClass("div", "playlist");
+  const tracksListEl = createElementWithClass("ul", "tracks-list");
+  parentElement.append(playlistEl);
 
-  renderHeading(playlistForRendering, playlistEle);
-  playlistEle.append(tracksListEle);
+  renderHeader(playlistForRendering, playlistEl);
+  playlistEl.append(tracksListEl);
 
   playlistForRendering.tracks.forEach((track) => {
-    renderTrack(track, tracksListEle);
+    renderTrack(track, tracksListEl);
   });
 }

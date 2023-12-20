@@ -1,10 +1,10 @@
-export function createElementWithClass(tagName, className) {
+export function createElementWithClass(tagName, ...classNames) {
   const ele = document.createElement(tagName);
-  ele.classList = className;
+  classNames.forEach((c) => ele.classList.add(c));
   return ele;
 }
 
-function createEleObj(tagName, props) {
+export function createEle(tagName, props) {
   const ele = document.createElement(tagName);
   Object.entries(props).forEach(([key, value]) => {
     ele.setAttribute(key, value);
