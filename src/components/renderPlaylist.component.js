@@ -11,7 +11,13 @@ export function renderPlaylist(playlistForRendering, parentElement) {
   renderHeader(playlistForRendering, playlistEl);
   playlistEl.append(tracksListEl);
 
+  const playlistDurationList = [];
   playlistForRendering.tracks.forEach((track) => {
-    renderTrack(track, tracksListEl);
+    renderTrack(
+      track,
+      tracksListEl,
+      playlistDurationList,
+      playlistForRendering
+    );
   });
 }
