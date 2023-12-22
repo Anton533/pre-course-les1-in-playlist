@@ -1,31 +1,25 @@
 import { createElementWithClass } from "../helpers.js";
 
-export function renderCountDuration(data, ele) {
+export function renderCountDuration(data, parentElement) {
   const playlistCountDurationWrapperEle = createElementWithClass(
     "div",
     "playlist__count-duration-wrapper"
   );
   renderCount(data, playlistCountDurationWrapperEle);
   renderDuration(data, playlistCountDurationWrapperEle);
-  ele.append(playlistCountDurationWrapperEle);
+  parentElement.append(playlistCountDurationWrapperEle);
 }
 
-function renderCount(data, ele) {
+function renderCount(data, parentElement) {
   const playlistCountEle = createElementWithClass("span", "playlist__count");
-  playlistCountEle.append(`${data.info.totalTracksCount} tracks, `);
-  ele.append(playlistCountEle);
+  playlistCountEle.append(`${data.tracks.length} tracks, `);
+  parentElement.append(playlistCountEle);
 }
 
-function renderDuration(data, ele) {
+function renderDuration(data, parentElement) {
   const playlistDurationEle = createElementWithClass(
     "span",
     "playlist__duration"
   );
-  const min =
-    (data.info.totalTracksDurationInSeconds -
-      (data.info.totalTracksDurationInSeconds % 60)) /
-    60;
-  const sec = data.info.totalTracksDurationInSeconds % 60;
-  playlistDurationEle.append(`${min}m ${sec}s`);
-  ele.append(playlistDurationEle);
+  parentElement.append(playlistDurationEle);
 }

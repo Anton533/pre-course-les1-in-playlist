@@ -1,6 +1,6 @@
 import { createElementWithClass } from "../helpers.js";
 
-export function renderArtistsInfo(data, ele) {
+export function renderArtistsInfo(data, parentElement) {
   const arr = data.tracks.slice(0, 3);
   const playlistArtistsWrapperEle = createElementWithClass(
     "span",
@@ -10,5 +10,5 @@ export function renderArtistsInfo(data, ele) {
   const andOther = createElementWithClass("span", "playlist__and-other");
   andOther.append(" " + "and others");
   playlistArtistsWrapperEle.append(artists, andOther);
-  ele.append(playlistArtistsWrapperEle);
+  parentElement.append(playlistArtistsWrapperEle);
 }
