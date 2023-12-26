@@ -1,12 +1,11 @@
-import { createElementWithClass } from "../helpers.js";
+import { ele } from "../helpers.js";
 
 export function renderCover(data, parentElement) {
-  const playlistCoverWrapper = createElementWithClass(
-    "div",
-    "playlist__cover-wrapper"
-  );
-  const playlistCoverImageEle = createElementWithClass("img", "playlist-cover");
-  playlistCoverImageEle.src = data.coverImageUrl;
-  playlistCoverWrapper.append(playlistCoverImageEle);
-  parentElement.append(playlistCoverWrapper);
+  const coverWrapperEle = ele("div", "playlist__cover-wrapper");
+  const coverImageEle = ele("img", "playlist-cover");
+
+  coverImageEle.src = data.coverImageUrl;
+
+  coverWrapperEle.append(coverImageEle);
+  parentElement.append(coverWrapperEle);
 }

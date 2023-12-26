@@ -1,23 +1,34 @@
-import { createElementWithClass } from "../helpers.js";
+import { ele } from "../helpers.js";
+import { secondsToMinutesAndSeconds } from "../helpers.js";
 
 import { renderTrack } from "./renderTrack.component.js";
-import { renderHeading as renderHeader } from "./renderHeading.component.js";
+import { renderHeader } from "./renderHeader.component.js";
 
 export function renderPlaylist(playlistForRendering, parentElement) {
-  const playlistEl = createElementWithClass("div", "playlist");
-  const tracksListEl = createElementWithClass("ul", "tracks-list");
-  parentElement.append(playlistEl);
+  const playlistEl = ele("div", "playlist");
+  const tracksListEl = ele("ul", "tracks-list");
 
   renderHeader(playlistForRendering, playlistEl);
+
+  parentElement.append(playlistEl);
   playlistEl.append(tracksListEl);
 
-  const playlistDurationList = [];
+  const songsDurationList = [];
+  const playlistForRederingLength = playlistForRendering.tracks.length;
+
   playlistForRendering.tracks.forEach((track) => {
-    renderTrack(
-      track,
-      tracksListEl,
-      playlistDurationList,
-      playlistForRendering
-    );
+    const trackAudioEle = renderTrack(track, tracksListEl);
+
+    trackAudioEle.addEventListener("loadedmetadata", () => {
+      songsDurationList.push(trackAudioEle.duration);
+
+      if (songsDurationList.length === playlistForRederingLength) {
+        const playlistDuration = playlistEl.querySelector(
+          ".playlist__duration"
+        );
+        const time = songsDurationList.reduce((acc, value) => acc + value, 0);
+        playlistDuration.textContent = secondsToMinutesAndSeconds(time);
+      }
+    });
   });
 }

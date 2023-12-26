@@ -1,6 +1,6 @@
-export function createElementWithClass(tagName, ...classNames) {
+export function ele(tagName, ...classNames) {
   const ele = document.createElement(tagName);
-  classNames.forEach((c) => ele.classList.add(c));
+  ele.classList.add(...classNames);
   return ele;
 }
 

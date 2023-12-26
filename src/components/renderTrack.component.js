@@ -1,46 +1,28 @@
-import { createElementWithClass } from "../helpers.js";
-import { secondsToMinutesAndSeconds } from "../helpers.js";
+import { ele } from "../helpers.js";
 
-export function renderTrack(
-  data,
-  parentElement,
-  playlistDurationList,
-  playlistForRendering
-) {
-  const trackEle = createElementWithClass("li", "track");
-  const trackImageEle = createElementWithClass("img", "track__cover");
-  const trackInfoEle = createElementWithClass("div", "track__info");
-  const trackTitleEle = createElementWithClass("span", "track__title");
-  const trackArtistNameEle = createElementWithClass(
-    "span",
-    "track__artist-name"
-  );
-  const trackNameEle = createElementWithClass("span", "track__name");
-  const trackAudioEle = createElementWithClass("audio", "track__audio");
-  const isHotEle = createElementWithClass("img", "track__is-hot");
+export function renderTrack(data, parentElement) {
+  const trackEle = ele("li", "track");
+  const imageEle = ele("img", "track__cover");
+  const infoEle = ele("div", "track__info");
+  const titleEle = ele("span", "track__title");
+  const artistNameEle = ele("span", "track__artist-name");
+  const nameEle = ele("span", "track__name");
+  const audioEle = ele("audio", "track__audio");
+  const isHotEle = ele("img", "track__is-hot");
   if (data.isHot) {
     isHotEle.src = "./src/icons/is-hot.png";
   }
 
-  trackAudioEle.addEventListener("loadedmetadata", () => {
-    playlistDurationList.push(trackAudioEle.duration);
+  imageEle.src = data.coverImageUrl;
+  artistNameEle.innerHTML = `${data.artistName} - `;
+  nameEle.innerText = `${data.title}`;
+  audioEle.controls = true;
+  audioEle.src = data.fileUrl;
 
-    if (playlistDurationList.length === playlistForRendering.tracks.length) {
-      const playlist = trackAudioEle.closest(".playlist");
-      const playlistDuration = playlist.querySelector(".playlist__duration");
-      const time = playlistDurationList.reduce((acc, value) => acc + value, 0);
-      playlistDuration.textContent = secondsToMinutesAndSeconds(time);
-    }
-  });
-
-  trackImageEle.src = data.coverImageUrl;
-  trackArtistNameEle.innerHTML = `${data.artistName} - `;
-  trackNameEle.innerText = `${data.title}`;
-  trackAudioEle.controls = true;
-  trackAudioEle.src = data.fileUrl;
-
-  trackTitleEle.append(isHotEle, trackArtistNameEle, trackNameEle);
-  trackInfoEle.append(trackTitleEle, trackAudioEle);
-  trackEle.append(trackImageEle, trackInfoEle);
+  titleEle.append(isHotEle, artistNameEle, nameEle);
+  infoEle.append(titleEle, audioEle);
+  trackEle.append(imageEle, infoEle);
   parentElement.append(trackEle);
+
+  return audioEle;
 }
